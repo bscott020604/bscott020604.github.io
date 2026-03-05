@@ -20,19 +20,29 @@ var init = function (window) {
         ///////////////////
         
         // TODO 1 : Declare and initialize our variables
-
+        var circle; // variable to hold a single circle when creating circles / iterating
+        var circles = []; // variable to store all circles in an array
 
 
         // TODO 2 : Create a function that draws a circle 
-        
+        function drawCircle() {
+        circle = draw.randomCircleInArea(canvas, true, true, "#999", 2);
+        physikz.addRandomVelocity(circle, canvas, 5, 5);
+        view.addChild(circle);
+        circles.push(circle);
+        }
+    
 
 
         // TODO 3 : Call the drawCircle() function
 
-
-
+        
         // TODO 7 : Use a loop to create multiple circles
+        for (var i = 0; i < 25; i++) {
+        physikz.updatePosition(circles[i])
+        // game.checkCirclePosition(circles[i])
 
+        }
 
 
 
@@ -46,14 +56,44 @@ var init = function (window) {
         and check to see if it has drifted off the screen.         
         */
         function update() {
-            // TODO 4 : Update the position of each circle using physikz.updatePosition()
+        // TODO 4 : Update the position of each circle using physikz.updatePosition()
+        physikz.updatePosition(0);
+        physikz.updatePosition(1);
+        physikz.updatePosition(2);
+        physikz.updatePosition(3);
+        physikz.updatePosition(4);
+        
 
+        // // TODO 5 : Call  game.checkCirclePosition() on circles
+
+        // game.checkCirclePosition(0);
+        // game.checkCirclePosition(1);
+        // game.checkCirclePosition(2);
+        // game.checkCirclePosition(3);
+        // game.checkCirclePosition(4);
+
+        // TODO 6 game.checkCirclePosition 
+        if (circle.x - circle.radius > canvas.width) { 
+    circle.x = 0 - circle.radius; 
+        }
+            if (circle.x + circle.radius < 0) {
+            circle.x = canvas.width + circle.radius;
+        }
+            if (circle.y + circle.radius < 0) {
+    circle.y = canvas.height + circle.radius;
+        }
+
+    if (circle.y - circle.radius > canvas.height) {
+    circle.y = 0 - circle.radius;
+        }
+
+        if (circle.y - circle.radius > canvas.height) {
+    circle.y = 0 - circle.radius;
+        }
+
+
+        // TODO 8 / TODO 9 : Iterate over the array
             
-            // TODO 5 : Call game.checkCirclePosition() on your circles
-           
-
-            // TODO 8 / TODO 9 : Iterate over the array
-           
             
         }
     
