@@ -85,11 +85,19 @@
         {
             positionX = positionX + speed; 
 
-            if (positionX > boardWidth){
+            // see if box fell off RIGHT side of screen
+            if (positionX > boardWidth)
+            {
               speed = speed * -1;
 
-              }
             }
+
+            // see if box fell off LEFT side of screen
+            if (positionX  < 0 )
+            {
+              speed = speed * -1;
+            }
+            
 
             moveBoxTo(positionX);
 
@@ -105,12 +113,11 @@
          * - increase the speed
          * - move the box to the left side of the screen.
          */
-        function handleBoxClick() 
-        {
+        function handleBoxClick(){
             positionX = 0
             points = points + 1
             changeBoxText (points);
-            speed = speed + 3;
+            speed = 3 * points + 10
             
 
 
